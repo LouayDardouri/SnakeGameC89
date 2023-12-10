@@ -1,0 +1,38 @@
+—--------serpent.c---------
+#include <stdlib.h>
+#include <stdio.h>
+#include <graph.h>
+
+struct head {
+	int pos_x;
+	int pos_y;
+	int sens_x; /*permet de savoir dans quel sens il n’a pas le droit de s’orienter. sens_x est dans {-1,0,1}*/
+	int sens_y; /*même chose pour l’ordonnée. Est dans {-1, 0, 1} */
+}
+
+
+—--------conversion_casepx.c---------
+#include <stdlib.h>
+#include <stdio.h>
+#include <graph.h>
+
+int InsertInCase(unsigned short int case, unsigned short int axe, int dimx, int dimy){
+	/**/
+if((axe!=40) && (axe!=60)){
+	printf(“DEVERROR: conversion_casepx: axe!=40 && axe!=60);
+	return EXIT_FAILURE;
+}	
+if(case>axe){
+	printf(“DEVERROR: conversion_casepx: case>axe”);
+	return EXIT_FAILURE;s
+}
+/*trucs mathématiques pour avoir les coordonnées en pixel d’une case
+et placer l’objet aux bonnes coordonnées de cette case en fonction de sa taille*/
+}
+
+—---------layering.c----------
+
+
+—-----main.c------
+#includes
+
