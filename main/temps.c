@@ -1,42 +1,35 @@
-//le programe n'est pas encore fini
-#include <stdio.h>
-#include <stdlib.h>
-#include <graph.h>
-#define CYCLE 10000L
 
-void EcrireTexte(int x, int y, char *texte, int taille) {
-    ChoisirCouleurDessin(CouleurParComposante(255, 255, 255)); // Couleur blanche
-    ChoisirTaille(1, taille);
-    EcrireTexte(x, y, texte);
+#include<stdio.h>
+#include<stdlib.h>
+#include<graph.h>
+#define DELTA 1000000L
+
+void update_timer(unsigned long int start) {
+	int secondes = ((Microsecondes() - start) / DELTA);
+	int minutes = 0;
+	char buf[100];
+		
+	while (secondes >= 60) {
+		minutes += 1;
+		secondes -= 60;
+	}
+
+	ChoisirEcran(3);
+	EffacerEcran(CouleurParComposante(54, 57, 63));
+	ChoisirCouleurDessin(CouleurParNom("white"));
+	snprintf(buf, 100, "Temps : %02d:%02d", minutes, secondes);
+	EcrireTexte(20, 20, buf, 1);
+	CopierZone(3, 0, 0, 0, 150, 30, 0, 0);
+	ChoisirEcran(0);
 }
 
-int main(void) {
-    InitialiserGraphique();
-    CreerFenetre(10, 10, 600, 400);
-
-    int suivant = Microsecondes() + CYCLE;
-    int Secondes = 0;
-
-    // boucle principale du programme
-    while (1) {
-        ChoisirEcran(1);
-        EffacerEcran(CouleurParComposante(0, 0, 0)); // Effacer l'écran avec couleur noire
-
-        int minutes = Secondes / 60;
-        int resteSecondes = Secondes % 60;
-
-        char tempsTexte[20];
-        sprintf(tempsTexte, "Temps : %d;%02d", minutes, resteSecondes);
-        EcrireTexte(10, 10, tempsTexte, 2);
-
-        if (Microsecondes() > suivant) {
-            suivant = Microsecondes() + CYCLE;
-            Secondes++;
-        }
-
-        ActualiserGraphique();
-    }
-
-    FermerGraphique();
-    return EXIT_SUCCESS;
+unsigned long int start_timer(unsigned long int start) {
+	start = Microsecondes() - start;
+	update_timer(start);
+	return start;
 }
+
+unsigned long int stop_timer(unsigned long int start) {
+	return Microsecondes() - start;
+}
+
