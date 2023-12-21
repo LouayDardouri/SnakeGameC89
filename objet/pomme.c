@@ -27,12 +27,12 @@ int VerifierCollisionAvecSerpent(struct Point serpent[], int tailleSerpent, int 
             return 1;  /* Collision détectée */
         }
     }
-    return 0;  /* Pas de collision */
+    return 0;
 }
 
 int AttendreAppuiTouche() {
     while (!SourisCliquee()) {
-        /* Attendre qu'une touche soit cliquée */
+        /* Attendre qu'une touche soit cliquée pour qqqqqqque les pommes s'affiche */
     }
     return Touche();
 }
@@ -44,25 +44,14 @@ int main() {
     /* Créer la fenêtre graphique */
     CreerFenetre(0, 0, TAILLE_GRILLE * TAILLE_CASE, TAILLE_GRILLE * TAILLE_CASE);
 
-    /* Charger l'image de fond (facultatif) */
-    ChargerImageFond("imageg.png");
+
 
     /* Initialiser le générateur de nombres aléatoires */
     srand(time(NULL));
 
-    /* Initialiser les positions du serpent */
-    struct Point serpent[TAILLE_SERPENT];
-    int i;
 
-    for (i = 0; i < TAILLE_SERPENT; i++) {
-        serpent[i].x = 20;  /* Remplacez par les positions réelles du serpent */
-        serpent[i].y = 20;
-    }
 
-    /* Dessiner le serpent (à remplacer par votre propre logique de dessin de serpent) */
-    for (i = 0; i < TAILLE_SERPENT; i++) {
-        DessinerPixel(serpent[i].x, serpent[i].y);
-    }
+
 
     /* Dessiner 5 pommes de manière aléatoire sur la grille */
     for (i = 0; i < 5; i++) {
@@ -76,8 +65,6 @@ int main() {
         DessinerPomme(x, y, TAILLE_CASE);
     }
 
-    /* Attendre une touche */
-    AttendreAppuiTouche();
 
     /* Fermer le mode graphique */
     FermerGraphique();
