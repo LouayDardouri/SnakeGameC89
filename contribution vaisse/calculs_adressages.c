@@ -12,6 +12,20 @@ unsigned short int isBlocVide(bloc arg){
 	return 0;
 }
 
+unsigned int max(unsigned int val1, unsigned int val2){
+	if(val1>val2){
+		return val1;
+	}
+	return val2;
+}
+
+unsigned int min(unsigned int val1, unsigned int val2){
+	if(val1>val2){
+		return val2;
+	}
+	return val1;
+}
+
 short int AddPivot(bloc * pivots, short int nb_pivots, bloc add){
 	unsigned short int cellule=0;
 	printf("flag\n");

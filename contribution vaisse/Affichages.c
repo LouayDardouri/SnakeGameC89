@@ -17,6 +17,25 @@ unsigned short int InitSerpent(bloc *tete, bloc *queue, unsigned int init_length
 	return 1;
 }
 
+unsigned short int InitMur(bloc *mur){
+	unsigned short int ind;
+	if(mur==NULL){
+		return 0;
+	}
+	/*remplissage bordures verticales*/
+	for(ind=0;ind<=20;ind++){
+		AfficherSprite(mur->sprite, 0, 20*ind);
+		AfficherSprite(mur->sprite, L_ECRAN-20, 20*ind);
+	}
+	/*afficher bordures horizontales*/
+	for(ind=0; ind<=30; ind++){
+		AfficherSprite(mur->sprite,ind*20,0);
+		AfficherSprite(mur->sprite,ind*20,H_ECRAN-20);
+		AfficherSprite(mur->sprite,ind*20,H_ECRAN-40);
+	}
+	return 1;
+}
+
 unsigned short int DeplacerSerpent(bloc *tete, bloc *queue, bloc * pivots, unsigned short int increment, short int nb_pivots){
 	tete->pos_x+=increment*(tete->sens_x);
 	tete->pos_y+=increment*(tete->sens_y);
@@ -34,3 +53,4 @@ unsigned short int DeplacerSerpent(bloc *tete, bloc *queue, bloc * pivots, unsig
 	
 	return 1;
 }
+
