@@ -34,3 +34,26 @@ short int AddPivot(bloc * pivots, short int nb_pivots, bloc add){
 	nb_pivots++;
 	return nb_pivots;
 }
+
+short int DelPivot(bloc * pivots, short int nb_pivots){
+	unsigned short int cellule=0;
+	if(isBlocVide(*pivots)){
+		printf("DEVERROR: DelPivot: tentative de suppression dans un tableau vide\n");
+		return -1;
+	}
+	while(isBlocVide(*(pivots+cellule+1))!=1){
+		*(pivots+cellule)=*(pivots+cellule+1);
+		
+		cellule++;
+	}
+	
+	(pivots+cellule)->sprite=0;
+	(pivots+cellule)->pos_x=0;
+	(pivots+cellule)->pos_y=0;
+	(pivots+cellule)->sens_x=0;
+	(pivots+cellule)->sens_y=0;
+	
+	nb_pivots--;
+	
+	return nb_pivots;
+}

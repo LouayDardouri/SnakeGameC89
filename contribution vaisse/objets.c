@@ -11,12 +11,3 @@ typedef struct {
 	int sens_x;
 	int sens_y;
 } bloc;
-
-typedef struct {
-	unsigned int pos_init;
-	unsigned int pos_angle1;
-	/*variables ? incr‚menter avec pos_x, pos_y*/
-	unsigned int largeur;
-	unsigned int hauteur;
-	unsigned int pos_angle2;
-} rectangle;
